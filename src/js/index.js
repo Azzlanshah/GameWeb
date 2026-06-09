@@ -11,7 +11,7 @@ const playerProperty = {
     color: "blue",
     position: {
         x: 0,
-        y: canvas.height - 100
+        y: 0
     }
 }
 
@@ -33,12 +33,19 @@ const enemy = new Enemy(enemyProperty)
 function animate() {
     ground.create()
     player.create()
-    enemy.create()
+    // enemy.create()
 
     player.update()
     enemy.update()
 
     window.requestAnimationFrame(animate)
 }
+
+window.addEventListener(
+    "keydown", 
+    function(callback) {
+        player.movement(callback.key)
+    }
+)
 
 animate()
